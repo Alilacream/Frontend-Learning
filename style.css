@@ -5,7 +5,7 @@
 }
 body{
     min-height: 100vh;
-    background-color: black ;
+    background-color: white ;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-size: cover;
     background-repeat:no-repeat ;
@@ -52,7 +52,7 @@ nav li:first-child{
     z-index: 999;
     background-color: rgba(255, 255, 255, 0.518);
     box-sizing: 3px 3px 5px rgb(14, 169, 200);    
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -64,4 +64,8 @@ nav li:first-child{
 }
 .sidebar a{
     width:100%
+}
+#solid{
+    height:48%
+    width:48%
 }
