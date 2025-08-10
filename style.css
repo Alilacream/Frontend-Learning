@@ -1,29 +1,28 @@
-:root{
-    --primary-color: black;
+:root {
+    --primary-color: rgb(25, 24, 24);
     --hover-color: rgba(34, 33, 33, 0.63);
     --accent-color: rgba(86, 13, 115, 0.629);
     --text-color: white;
 }
 
-/* You need to memorise this type of DEFAULT code */
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-family: Poppins, "Segoe UI", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color : var(--text-color);
+    color: var(--text-color);
 }
 
-body{
+body {
     min-height: 100vh;
     min-height: 100dvh;
     background-color: var(--primary-color);
 }
 
-main{
+main {
     padding: min(5em, 7%);
 }
 
@@ -31,62 +30,108 @@ main p {
     margin-top: .35em;
 }
 
-nav ul{
+nav ul {
     list-style: none;
-    display:flex;
-}
-nav li{
     display: flex;
-    
 }
-nav .Home{
-     margin-right:auto; 
+
+nav li {
+    display: flex;
 }
-nav a{
-    display:flex;
+
+nav .Home {
+    margin-right: auto;
+}
+
+nav a {
+    display: flex;
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--text-color); /* fixed variable name */
     padding: 1em 2em;
     transition: background-color 150ms ease;
 }
-nav a:hover{
-    background-color: var(--hover-color);
+
+nav a.active-link {
+    border-bottom: 2px solid var(--text-color);
 }
 
-nav a.active-link{
-    border-bottom: 2px solid var(--text-color)
-}
-nav a.accent-link{
+nav a.accent-link {
     background-color: var(--accent-color);
 }
 
+nav a:hover {
+    background-color: var(--hover-color);
+}
+
+#Opening{
+    margin-left: auto;
+}
+/* SVG Buttons */
+#Opening,
+#Closing {
+    background: none;
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+    color: var(--text-color);
+    display: none; /* hidden by default, shown on mobile */
+}
+/* This was my problem WHEN THE SVG icons won't show up for me */
+#Opening svg,
+#Closing svg {
+    width: 24px;
+    height: 24px;
+}
+/* This overlay is for shadowing the background when the hamburger is inputed in */
+#overlay{
+    background: rgba(0,0,0,0.5);
+    position:fixed;
+    inset:0;
+    z-index: 9;
+    display:none;
+}
+
+/* Mobile view */
 @media screen and (max-width: 700px) {
-   nav{
-     position:fixed;
-     top:0;
-     right:-100%;
-     height: 100vh;
-     width: min(15em, 100%);
-     z-index:10;
-     border-left: 1px solid var(--hover-color);
-     transition:right 400ms ease-in;
-   }
-   nav.show{
-    right:0;
-   }
-    main{
-    padding: min(5em, 7%);
+    #Opening,
+    #Closing {
+        display: block;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: min(15em, 100%);
+        z-index: 10;
+        border-left: 1px solid var(--hover-color);
+        background: var(--primary-color); /* ensure menu is visible */
+        transition: right 400ms ease-out;
+    }
+    
+    nav.show {
+        right: 0;
     }
 
-     main p {
-         margin-top: .35em;
-     }  
-    nav a{
-    width: 100%;
-    padding-left: 2.5em;
-   }
-   nav ul{
-    width:100%;
-    flex-direction: column;
-   }
+    nav.show ~ #overlay{
+        display:block;  
+    }    
+
+    nav ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    nav a.active-link {
+        border-bottom: none;
+    }
+
+    nav .Home {
+        margin-right: unset;
+    }
+
+    nav a {
+        width: 100%;
+        padding-left: 2.5em;
+    }
 }
