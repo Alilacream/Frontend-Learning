@@ -1,0 +1,75 @@
+body {
+<<<<<<< HEAD
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  min-height : 100vh;
+}
+.loading {
+  max-width: 50%;
+  line-height: 1.4 ;
+  font-size:1.2em;
+  font-weight:bold;
+  text-align: center;
+}
+
+.loading__author{
+  font-weight: normal;
+  font-size:0.9em;
+  color: rgba(189,189,189 ,1);
+  margin: 0.6rem 0 2rem 0;
+  display:block;
+}
+
+.loading__anim{
+  height:35px;
+  width:35px;
+  display: inline-block;  
+  
+  border: 5px solid rgba(189,189,189 ,0.25); 
+  border-left-color: rgba(3,155,229 ,1);  
+  border-top-color: rgba(3,155,229 ,1);
+  border-radius:50%;
+  animation: rotate 0.7s infinite linear;
+}
+
+@keyframes rotate { to {  transform: rotate(1turn) }}
+=======
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.loading {
+  max-width: 50%;
+  line-height: 1.4;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.loading__author {
+  font-weight: normal;
+  font-size: 0.9em;
+  color: rgba(189, 189, 189, 1);
+  margin: 0.6rem 0 2rem 0;
+  display: block;
+}
+
+.loading__anim {
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  border: 5px solid rgba(189, 189, 189, 0.25);
+  border-left-color: rgba(3, 155, 229, 1);
+  border-top-color: rgba(3, 155, 229, 1);
+  border-radius: 50%;
+  animation: rotate 0.7s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+>>>>>>> f48a905 (Learning daily UI: day_1)
