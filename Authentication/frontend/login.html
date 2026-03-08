@@ -8,15 +8,11 @@
   </head>
   <body>
     <div class="login-box">
-      <form method="get" action="register.php">
+      <form method="post" action="../backend/login.php">
         <h2>Login</h2>
         <div class="input-box">
           <input type="text" name="user_name" required />
           <label>Username</label>
-        </div>
-        <div class="input-box">
-          <input type="email" name="email" required />
-          <label>Email</label>
         </div>
         <div class="input-box">
           <input type="password" name="password" maxlength="12" required />
@@ -26,10 +22,10 @@
           <label><input type="checkbox" name="" id="" />Remember me </label
           ><a href="">Forgot Password?</a>
         </div>
-        <div>
-          <button class="login-button">
-            <a href="/frontend/login">Login</a>
-          </button>
+
+        <div class="not-registered">
+          <label>Don't have an account ? </label>
+          <a href="/register.html">Register.</a>
         </div>
       </form>
     </div>
