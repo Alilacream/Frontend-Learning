@@ -1,7 +1,11 @@
 #!/bin/bash
 
-tmux new -s Ali
+SESSION="auth-dev"
 
-php -S localhost:8080 -t backend && tmux attach -t Ali
+tmux new-session -d -s "$SESSION"
 
-npx serve frontend
+tmux send-keys -t "$SESSION" "cd frontend && npx serve" C-m
+tmux split-window -t "$SESSION" -h
+tmux send-keys -t "$SESSION" "php -S localhost:8080 -t backend" C-m
+
+tmux attach-session -t "$SESSION"
