@@ -19,8 +19,20 @@ button {
   padding: 10px 20px;
   border: none;
   font-weight: bold;
+  transition:
+    background-color 300ms linear,
+    color 300ms linear;
+}
+/* fonctionnalité dyawli*/
+button:hover {
+  background: white;
+  color: #5f9341;
 }
 
+.delete-btn {
+  background: white;
+  color: #5f9341;
+}
 ul {
   margin-top: 10px;
   list-style: none;
