@@ -12,8 +12,19 @@ if (leadsFromLocalStorage) {
   renderLeads(myLeads);
 }
 
+// XSS handler input function to prevent XSS attack:
+// HACK: XSS attack is a type of hack when the user has the ability to inject JS scripts (code).
+function handle_XSS(input_Request) {
+  // still searching :P.
+}
+// filter out duplicates in myLeads array
+function filter(leads) {
+  const uniq = [...new Set(leads)];
+  return uniq;
+}
 // played with a simple parameter
 function renderLeads(leads) {
+  leads = filter(leads);
   let listItems = "";
   for (let i = 0; i < leads.length; i++) {
     listItems += `
@@ -26,13 +37,14 @@ function renderLeads(leads) {
   }
   ulEl.innerHTML = listItems;
 }
-
+// onclick of the delete button
+// caches the array and the localstorage.
 deleteBtn.addEventListener("dblclick", function () {
   localStorage.clear();
-  myLeads = [];
+  myLeads.length = 0;
   renderLeads(myLeads);
 });
-
+// users input
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
   inputEl.value = "";
