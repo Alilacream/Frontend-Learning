@@ -1,59 +1,58 @@
 import React from "react"
-import Response from "./Response"
+import Form from "./components/Form"
+import Ingredients from "./components/Ingredients"
+import Recipe from "./components/Recipe"
+import GetIng from "./components/getIngredients"
 export default function Main() {
+  /**
+   * Challenge: clean up our code!
+   * Let's make a couple new components to make things a
+   * little cleaner. (Notice: I'm not suggesting what we
+   * have now is bad or wrong. I'm mostly finding an excuse
+   * to get in some hands-on practice 🙂)
+   * 
+   * 1. Move the entire recipe <section> into its own
+   *    ClaudeRecipe component
+   * 2. Move the list of ingredients <section> into its
+   *    own IngredientsList component.
+   * 
+   * While you're considering how to structure things, consider
+   * where state is, think about if it makes sense or not to
+   * move it somewhere else, how you'll communicate between
+   * the parent/child components, etc.
+   * 
+   * The app should function as it currently does when you're
+   * done, so there will likely be some extra work to be done
+   * beyond what I've listed above.
+   * Done <:
+   */
 
-    const [ingredients, setIngredients] = React.useState(
-        ["all the main spices", "pasta", "ground beef", "tomato paste"]
-    )
-        const [recipeShown, setRecipe] = React.useState(false)
-        function display() {
-            setRecipe(prev => !prev)
-        }
-    /**
-     * Challenge:
-     * 1. Create a boolean state that, for now, will represent whether
-     *    we've gotten a recipe back from the "chef". Default to `false`.
-     *    Can call it `recipeShown`.
-     * 2. Grab the markup in recipeCode.md and paste it below. This will
-     *    be a placeholder for the content that will come back from the 
-     *    chef once we set up that feature.
-     * 3. When the user clicks the "Get a recipe" button, flip the
-     *    `recipeShown` state to true.
-     * 4. Only display the recipe code content if `recipeShown` is true.
-     */
+  const [ingredients, setIngredients] = React.useState(
+    ["all the main spices", "pasta", "ground beef", "tomato paste"]
+  )
+  const [recipeShown, setRecipeShown] = React.useState(false)
 
-    const ingredientsListItems = ingredients.map(ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
-    // for adding ingredient
-    function addIngredient(formData) {
-        const newIngredient = formData.get("ingredient")
-        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
-    }
+  function toggleRecipeShown() {
+    setRecipeShown(prevShown => !prevShown)
+  }
 
-    return (
-        <main>
-            <form action={addIngredient} className="add-ingredient-form">
-                <input
-                    type="text"
-                    placeholder="e.g. oregano"
-                    aria-label="Add ingredient"
-                    name="ingredient"
-                />
-                <button>Add ingredient</button>
-            </form>
-            {ingredients.length > 0 && <section>
-                <h2>Ingredients on hand:</h2>
-                <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
-                {ingredients.length > 3 && <div className="get-recipe-container">
-                    <div>
-                        <h3>Ready for a recipe?</h3>
-                        <p>Generate a recipe from your list of ingredients.</p>
-                    </div>
-                    <button onClick={display}>Get a recipe</button>
-                </div>}
-            </section>}
-            {recipeShown && <Response />}
-        </main>
-    )
+
+
+  function addIngredient(formData) {
+    const newIngredient = formData.get("ingredient")
+    setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+  }
+
+  return (
+    <main>
+      <Form addIngredient={addIngredient} />
+      {/** shuf dir hna forum */}
+      {ingredients.length > 0 && <section>
+        <Ingredients list={ingredients} />
+        {ingredients.length > 3 && <Recipe toggle={toggleRecipeShown} />}
+      </section>}
+
+      {recipeShown && <GetIng />}
+    </main>
+  )
 }
