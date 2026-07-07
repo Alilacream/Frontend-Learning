@@ -3,6 +3,7 @@ import Form from "./components/Form"
 import Ingredients from "./components/Ingredients"
 import Recipe from "./components/Recipe"
 import GetIng from "./components/getIngredients"
+import { getHfResponse } from "./ai"
 export default function Main() {
   /**
    * Challenge: clean up our code!
@@ -35,9 +36,9 @@ export default function Main() {
   function toggleRecipeShown() {
     setRecipeShown(prevShown => !prevShown)
   }
-
-
-
+  const data = `i have, ${ingredients.join(",")}`
+  const result = getHfResponse(data)
+  console.log(result)
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
     setIngredients(prevIngredients => [...prevIngredients, newIngredient])
