@@ -10,7 +10,7 @@ export default function App() {
     // NOTE: useState function are used to change state.
     // After that tutor asked to map all over pads.
     // Going on, we made a simple refrence function that checks and returns 
-    // BUG: i made was not using the specified object, (i only switched the the on attribute)
+    // BUG: i made was not using the specified object, (i only switched the on attribute)
     //
     setPads(prev => prev.map(pad => {
       return pad.id === id ? { ...pad, on: !pad.on } : pad
