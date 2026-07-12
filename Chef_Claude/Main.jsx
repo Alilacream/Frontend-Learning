@@ -38,7 +38,6 @@ export default function Main() {
   }
   const data = `i have, ${ingredients.join(",")}`
   const result = getHfResponse(data)
-  console.log(result)
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
     setIngredients(prevIngredients => [...prevIngredients, newIngredient])
@@ -53,7 +52,7 @@ export default function Main() {
         {ingredients.length > 3 && <Recipe toggle={toggleRecipeShown} />}
       </section>}
 
-      {recipeShown && <GetIng />}
+      {recipeShown && <GetIng response={result} />}
     </main>
   )
 }

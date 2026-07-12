@@ -1,9 +1,8 @@
-import { HfInference } from '@huggingface/inference'
+import { InferenceClient } from '@huggingface/inference'
 import { SYSTEM_PROMPT, VITE_AI_API_KEY } from './config'
 
-const hf = new HfInference(VITE_AI_API_KEY)
+const hf = new InferenceClient(VITE_AI_API_KEY)
 // wa had l api key cha7fni
-console.log("API Key starts with:", VITE_AI_API_KEY)
 export async function getHfResponse(data) {
   // first time using try catch method 
   // NOTE: hand coding is fun :3, until you hit a bug :<
