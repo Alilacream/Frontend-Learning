@@ -28,16 +28,18 @@ export default function Main() {
    * Done <:
    */
 
-  const [ingredients, setIngredients] = React.useState(
-    ["all the main spices", "pasta", "ground beef", "tomato paste"]
-  )
-  const [recipeShown, setRecipeShown] = React.useState(false)
+  const [ingredients, setIngredients] = React.useState([])
+  // changed it to string, to change state into the ai response
+  const [recipe, setRecipe] = React.useState("")
 
-  function toggleRecipeShown() {
-    setRecipeShown(prevShown => !prevShown)
+
+  // NOTE: you can use await method only in async functions
+  async function getRecipe() {
+
+    const recipeMarkdown = await getHfResponse(ingredients)
+    // set the new recipe
+    setRecipe(recipeMarkdown)
   }
-  const data = `i have, ${ingredients.join(",")}`
-  const result = getHfResponse(data)
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
     setIngredients(prevIngredients => [...prevIngredients, newIngredient])
@@ -45,14 +47,13 @@ export default function Main() {
 
   return (
     <main>
-      <Form addIngredient={addIngredient} />
       {/** shuf dir hna forum */}
+      <Form addIngredient={addIngredient} />
       {ingredients.length > 0 && <section>
         <Ingredients list={ingredients} />
-        {ingredients.length > 3 && <Recipe toggle={toggleRecipeShown} />}
+        {ingredients.length > 3 && <Recipe toggle={getRecipe} />}
       </section>}
-
-      {recipeShown && <GetIng response={result} />}
+      {recipeShown && <GetIng response={recipe} />}
     </main>
   )
 }

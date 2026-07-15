@@ -1,11 +1,13 @@
+// next plan we build ratelimiting to this
 import { InferenceClient } from '@huggingface/inference'
 import { SYSTEM_PROMPT, VITE_AI_API_KEY } from './config'
 
-const hf = new InferenceClient(VITE_AI_API_KEY)
 // wa had l api key cha7fni
-export async function getHfResponse(data) {
+const hf = new InferenceClient(VITE_AI_API_KEY)
+export async function getHfResponse(ingredientsArr) {
   // first time using try catch method 
   // NOTE: hand coding is fun :3, until you hit a bug :<
+  const data = `i have a list of ingredients, ${ingredientsArr.join(",")}, make me a recipe you'd recommend make.`
   try {
     const result = await hf.chatCompletion({
       model: "meta-llama/Llama-3.1-8B-Instruct", // or any chat model on HF
