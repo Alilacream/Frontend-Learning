@@ -35,10 +35,10 @@ export default function Main() {
 
   // NOTE: you can use await method only in async functions
   async function getRecipe() {
-
     const recipeMarkdown = await getHfResponse(ingredients)
     // set the new recipe
     setRecipe(recipeMarkdown)
+    console.log(recipeMarkdown)
   }
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
@@ -53,7 +53,7 @@ export default function Main() {
         <Ingredients list={ingredients} />
         {ingredients.length > 3 && <Recipe toggle={getRecipe} />}
       </section>}
-      {recipeShown && <GetIng response={recipe} />}
+      {recipe && <GetIng response={recipe} />}
     </main>
   )
 }
