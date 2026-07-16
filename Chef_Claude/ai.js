@@ -23,6 +23,7 @@ export async function getHfResponse(ingredientsArr) {
       max_tokens: 1024
     })
     // hada howa li dar lina l problem. 
+    // BUG: used claude result method
     // NOTE: each ai inferrence has it's own result methods.
     return result.choices[0].message.content
   } catch (e) {
