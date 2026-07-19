@@ -1,5 +1,5 @@
 // the bug here was we were using a state here that stayed constante, that is why the pads
-// HACK: Didn't chage opacity
+// HACK: Didn't change opacity
 export default function Pad(props) {
 
   return (
