@@ -22,6 +22,7 @@ div#root {
 }
 
 main {
+    font-family: Karla, sans-serif;
     background-color: #F5F5F5;
     height: 100%;
     border-radius: 5px;
@@ -30,7 +31,9 @@ main {
     justify-content: space-evenly;
     align-items: center;
 }
-
+main > h1 {
+  color: #59E391;
+} 
 .dice-container {
     display: grid;
     grid-template: auto auto / repeat(5, 1fr);
