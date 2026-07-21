@@ -56,7 +56,7 @@ export default function App() {
   const checkGame = dice.every(obj => obj.isHeld === true && obj.value === dice[1].value)
   return (
     <main>
-      {chcek && <h1>Congrats 🥳✅💯</h1>}
+      {checkGame && <h1>Congrats 🥳✅💯</h1>}
       <div className="dice-container">
         {diceElements}
       </div>
